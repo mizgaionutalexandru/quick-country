@@ -1,0 +1,48 @@
+.form {
+  display: flex;
+  border: 2px solid var(--blue);
+  border-radius: 0.8rem;
+  width: 48rem;
+  height: 4.8rem;
+  position: absolute;
+  left: 50%;
+  translate: -50% 0;
+  background-color: var(--white);
+  filter: drop-shadow(0px 2px 6px rgba(0, 0, 0, 0.25));
+}
+
+.form:focus-within {
+  outline: 2px dashed var(--blue);
+  outline-offset: 4px;
+}
+
+.form input {
+  width: 75%;
+  height: 100%;
+  font-size: 1.6rem;
+  padding-inline: 2rem;
+}
+
+.form button {
+  width: 25%;
+  height: 100%;
+  font-size: 1.6rem;
+  background-color: var(--blue);
+  color: var(--white);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+.form button:hover,
+.form button:focus {
+  background-color: var(--blueh);
+}
+
+.form button img {
+  width: 2.4rem;
+  height: 2.4rem;
+}

@@ -12,10 +12,17 @@
   --white: #ffffff;
   --black: #003148;
   --blue: #0096df;
+  --blueh: #0087c9;
+}
+
+html {
+  /* setting 1rem = 10px */
+  font-size: 62.5%;
 }
 
 body,
-body button {
+body button,
+body input {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -23,4 +30,8 @@ body,
 body #root {
   min-width: 100vw;
   min-height: 100vh;
+}
+
+#root {
+  background-color: var(--bg);
 }
