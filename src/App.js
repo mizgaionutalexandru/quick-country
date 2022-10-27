@@ -1,10 +1,14 @@
-import './App.css';
-import SearchBar from './components/SearchBar/SearchBar';
+import classes from './App.module.css';
+import Search from './components/Search/Search';
 
 function App() {
   return (
-    <div className="App">
-      <SearchBar />
+    <div className={classes.App}>
+      <div className={classes.content}>
+        <Search />
+        {/* countries */}
+      </div>
+      <div className={classes.map} id="map"></div>
     </div>
   );
 }

@@ -1,0 +1,109 @@
+.results {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  width: 75%;
+  border-radius: 0 0rem 0.8rem 0.8rem;
+  border: 2px solid var(--blue);
+  border-top: 0;
+  animation-name: slide-in;
+  animation-duration: 250ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  transform-origin: top;
+  padding-block: 0.8rem;
+}
+
+@keyframes slide-in {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.results:has(.loading),
+.results:has(.error) {
+  position: relative;
+  height: 6.4rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.error {
+  font-size: 1.6rem;
+}
+
+.loading {
+  position: relative;
+  animation-delay: 250ms;
+}
+
+.loading,
+.loading::before,
+.loading::after {
+  background-color: var(--blue);
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 100px;
+  animation-name: fade;
+  animation-duration: 1500ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.loading::before,
+.loading::after {
+  content: '';
+  position: absolute;
+}
+
+.loading::before {
+  right: calc(0.8rem + 0.4rem);
+  animation-delay: 0;
+}
+
+.loading::after {
+  left: calc(0.8rem + 0.4rem);
+  animation-delay: 500ms;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.result {
+  display: flex;
+  padding-inline: 2rem;
+  gap: 1.6rem;
+  padding-block: 0.8rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.result:hover,
+.result:focus-visible {
+  background-color: var(--bg);
+}
+
+.result img {
+  width: 3.6rem;
+}
+
+.text {
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: var(--black);
+}
