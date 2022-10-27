@@ -1,15 +1,28 @@
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 import magnifier from '../../magnifier.svg';
 import classes from './SearchBar.module.css';
 
 function SearchBar({ onSearch, adapt }) {
-  const inputRef = useRef(null);
+  const [query, setQuery] = useState('');
 
   const submitHandler = (e) => {
     e.preventDefault();
-    const query = inputRef.current.value;
     onSearch(query);
   };
+
+  const changeQueryHandler = (e) => {
+    setQuery(e.target.value);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (query != '') onSearch(query);
+    }, 450);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [query]);
 
   return (
     <form
@@ -17,12 +30,12 @@ function SearchBar({ onSearch, adapt }) {
       onSubmit={submitHandler}
     >
       <input
-        ref={inputRef}
         type="text"
         name="input-country"
         id="input-country"
         autoComplete="off"
         placeholder="Search any country..."
+        onChange={changeQueryHandler}
       />
       <button type="submit">
         <img src={magnifier} alt="" />
