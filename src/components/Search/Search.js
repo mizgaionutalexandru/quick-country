@@ -14,7 +14,7 @@ const reducer = (state, action) => {
   switch (action.type) {
     case 'search':
       return {
-        resultsVisible: state.resultsVisible,
+        resultsVisible: true,
         isLoading: true,
         results: null,
         error: null,
@@ -50,8 +50,8 @@ function Search() {
     dispatch({ type: 'isLoading', isLoading: false });
   };
 
-  const blurHandler = () => {
-    dispatch({ type: 'reset' });
+  const blurHandler = (e) => {
+    if (!e.currentTarget.contains(e.relatedTarget)) dispatch({ type: 'reset' });
   };
 
   const keydownHandler = (e) => {
@@ -62,8 +62,8 @@ function Search() {
     // <div className={`${classes.search} ${classes.left}`}>
     <div
       className={classes.search}
-      onBlur={blurHandler}
       onKeyDown={keydownHandler}
+      onBlur={blurHandler}
     >
       <SearchBar onSearch={searchHandler} adapt={state.resultsVisible} />
       {state.resultsVisible && (
