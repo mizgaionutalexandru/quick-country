@@ -4,7 +4,6 @@ function SearchResults({ results, isLoading, error }) {
   let content;
   if (results?.length > 0)
     content = results.map((result) => {
-      console.log(result);
       return (
         <div key={result.cca2} className={classes.result} tabIndex="0">
           {results.flags}

@@ -37,6 +37,9 @@ function Search() {
 
   const searchHandler = async (query) => {
     try {
+      if (query === '')
+        throw new Error('No query found. Please type something.');
+
       dispatch({ type: 'search' });
       const res = await fetch(`https://restcountries.com/v3.1/name/${query}`);
       if (res.status === 404) throw new Error('No countries found.');
