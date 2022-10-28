@@ -16,7 +16,7 @@ function SearchBar({ onSearch, adapt }) {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      if (query != '') onSearch(query);
+      if (query !== '') onSearch(query);
     }, 450);
 
     return () => {
@@ -26,7 +26,7 @@ function SearchBar({ onSearch, adapt }) {
 
   return (
     <form
-      className={`${classes.form} ${adapt && classes.adapt}`}
+      className={`${classes.form} ${adapt ? classes.adapt : ''}`}
       onSubmit={submitHandler}
     >
       <input
