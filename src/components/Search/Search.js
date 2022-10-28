@@ -4,7 +4,7 @@ import classes from './Search.module.css';
 import SearchResults from './SearchResults';
 
 const initialState = {
-  resultsVisible: false,
+  isVisible: false,
   isLoading: false,
   error: null,
   results: null,
@@ -12,20 +12,20 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'search':
+    case 'START_SEARCH':
       return {
-        resultsVisible: true,
+        isVisible: true,
         isLoading: true,
         results: null,
         error: null,
       };
-    case 'results':
-      return { ...state, resultsVisible: true, results: action.results };
-    case 'error':
-      return { ...state, resultsVisible: true, error: action.error };
-    case 'isLoading':
-      return { ...state, resultsVisible: true, isLoading: action.isLoading };
-    case 'reset':
+    case 'SET_RESULTS':
+      return { ...state, results: action.results };
+    case 'SET_ERROR':
+      return { ...state, isVisible: true, error: action.error };
+    case 'STOP_LOADING':
+      return { ...state, isLoading: false };
+    case 'RESET':
       return initialState;
     default:
       throw new Error('Action invalid!');
@@ -40,25 +40,25 @@ function Search() {
       if (query === '')
         throw new Error('No query found. Please type something.');
 
-      dispatch({ type: 'search' });
+      dispatch({ type: 'START_SEARCH' });
       const res = await fetch(`https://restcountries.com/v3.1/name/${query}`);
       if (res.status === 404) throw new Error('No countries found.');
       if (!res.ok) throw new Error('Something went wrong.');
 
       const data = await res.json();
-      dispatch({ type: 'results', results: data.slice(0, 3) });
+      dispatch({ type: 'SET_RESULTS', results: data.slice(0, 3) });
     } catch (err) {
-      dispatch({ type: 'error', error: err.message });
+      dispatch({ type: 'SET_ERROR', error: err.message });
     }
-    dispatch({ type: 'isLoading', isLoading: false });
+    dispatch({ type: 'STOP_LOADING' });
   };
 
   const blurHandler = (e) => {
-    if (!e.currentTarget.contains(e.relatedTarget)) dispatch({ type: 'reset' });
+    if (!e.currentTarget.contains(e.relatedTarget)) dispatch({ type: 'RESET' });
   };
 
   const keydownHandler = (e) => {
-    if (e.key == 'Escape') dispatch({ type: 'reset' });
+    if (e.key == 'Escape') dispatch({ type: 'RESET' });
   };
 
   return (
@@ -68,8 +68,8 @@ function Search() {
       onKeyDown={keydownHandler}
       onBlur={blurHandler}
     >
-      <SearchBar onSearch={searchHandler} adapt={state.resultsVisible} />
-      {state.resultsVisible && (
+      <SearchBar onSearch={searchHandler} adapt={state.isVisible} />
+      {state.isVisible && (
         <SearchResults
           results={state.results}
           isLoading={state.isLoading}
