@@ -9,7 +9,7 @@ function SearchResults({ results, isLoading, error }) {
           {results.flags}
           <img src={result.flags.svg} alt={`${result.name.official}'s flag`} />
           <div className={classes.text}>
-            <span>{result.name.official}</span>
+            <span>{result.name.common}</span>
             <span>({result.cca2})</span>
           </div>
         </div>
