@@ -32,7 +32,7 @@ const reducer = (state, action) => {
   }
 };
 
-function Search() {
+function Search({ showCountry }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const searchHandler = async (query) => {
@@ -58,7 +58,7 @@ function Search() {
   };
 
   const keydownHandler = (e) => {
-    if (e.key == 'Escape') dispatch({ type: 'RESET' });
+    if (e.key === 'Escape') dispatch({ type: 'RESET' });
   };
 
   return (
@@ -74,6 +74,7 @@ function Search() {
           results={state.results}
           isLoading={state.isLoading}
           error={state.error}
+          showCountry={showCountry}
         />
       )}
     </div>
