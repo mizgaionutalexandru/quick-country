@@ -30,8 +30,33 @@ body,
 body #root {
   min-width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #root {
   background-color: var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--bg);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--blueh);
+}
+
+@supports (scrollbar-color: red blue) {
+  * {
+    scrollbar-color: var(--blue) var(--bg);
+  }
 }
