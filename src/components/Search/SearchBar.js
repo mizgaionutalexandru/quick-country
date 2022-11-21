@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import magnifier from '../../magnifier.svg';
+import magnifier from '../../icons/magnifier.svg';
 import classes from './SearchBar.module.css';
 
 function SearchBar({ onSearch, adapt }) {
