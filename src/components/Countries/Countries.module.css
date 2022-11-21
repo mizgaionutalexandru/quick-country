@@ -1,11 +1,29 @@
+.message,
+.list {
+  padding-top: 12.8rem;
+  margin: 0 auto;
+}
+
+.message {
+  width: 48rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.message img {
+  width: 2.4rem;
+}
+
 .list {
   display: grid;
   row-gap: 3.2rem;
   list-style-type: none;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding-top: 12.8rem;
   max-width: 144rem;
-  margin: 0 auto;
   justify-items: center;
 }
 
@@ -62,6 +80,7 @@
 
 .details li {
   display: flex;
+  align-items: center;
   gap: 0.8rem;
 }
 
