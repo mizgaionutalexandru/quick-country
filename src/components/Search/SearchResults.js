@@ -6,7 +6,7 @@ function SearchResults({ results, isLoading, error, showCountry }) {
     content = results.map((result) => {
       const countryData = {
         cca3: result.cca3,
-        name: result.name.common,
+        name: result.name.official,
         region: result.region,
         currency: Object.values(result.currencies)[0],
         population: result.population,
@@ -30,7 +30,7 @@ function SearchResults({ results, isLoading, error, showCountry }) {
           {results.flags}
           <img src={result.flags.svg} alt={`${result.name.official}'s flag`} />
           <div className={classes.text}>
-            <span>{result.name.common}</span>
+            <span>{result.name.official}</span>
             <span>({result.cca3})</span>
           </div>
         </div>

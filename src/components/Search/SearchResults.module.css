@@ -3,6 +3,7 @@
   flex-direction: column;
   background-color: var(--white);
   width: 75%;
+  max-width: 75%;
   border-radius: 0 0rem 0.8rem 0.8rem;
   border: 2px solid var(--blue);
   border-top: 0;
