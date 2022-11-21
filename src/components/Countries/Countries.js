@@ -68,7 +68,11 @@ function Countries({ shownCountries }) {
                   </p>
                 </li>
               </ul>
-              <img src={country.coatOfArms} className={classes.coat} />
+              <img
+                src={country.coatOfArms}
+                alt={`${country.name}'s coat of arms`}
+                className={classes.coat}
+              />
             </div>
           </article>
         );
