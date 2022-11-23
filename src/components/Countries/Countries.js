@@ -1,12 +1,8 @@
 import classes from './Countries.module.css';
 import star from './../../icons/star.svg';
-import currency from './../../icons/currency.svg';
-import population from './../../icons/population.svg';
-import capital from './../../icons/capital.svg';
-import language from './../../icons/language.svg';
-import timezone from './../../icons/timezone.svg';
-import border from './../../icons/border.svg';
 import smile from './../../icons/smile.svg';
+
+import CountryDetail from './CountryDetail';
 
 function Countries({ shownCountries }) {
   const content =
@@ -26,60 +22,57 @@ function Countries({ shownCountries }) {
                 }}
                 className={classes.flag}
                 alt={`${country.name}'s flag`}
-              ></div>
+              >
+                {country.flag ? '' : 'Something went wrong.'}
+              </div>
               <div className={classes.info}>
                 <header>
+                  <img src={star} alt="Save country action icon" />
                   <h2>
                     {country.name} ({country.cca3})
                   </h2>
                   <p>{country.region}</p>
-                  <img src={star} alt="Save country action icon" />
                 </header>
                 <ul className={classes.details}>
-                  <li>
-                    <img src={currency} alt="Country currency icon" />
-                    <p>
-                      Currency: {country.currency.name} (
-                      {country.currency.symbol})
-                    </p>
-                  </li>
-                  <li>
-                    <img src={population} alt="Country population icon" />
-                    <p>Population: {country.population}</p>
-                  </li>
-                  <li>
-                    <img src={capital} alt="Country capital icon" />
-                    <p>Capital: {country.capital}</p>
-                  </li>
-                  <li>
-                    <img src={language} alt="Country language icon" />
-                    <p>
-                      Language{country.languages.length > 1 ? 's' : ''}:{' '}
-                      {country.languages.join(', ')}
-                    </p>
-                  </li>
-                  <li>
-                    <img src={timezone} alt="Country time zones icon" />
-                    <p>
-                      Time zone{country.timezones.length > 1 ? 's' : ''}:{' '}
-                      {country.timezones.join(', ')}
-                    </p>
-                  </li>
-                  <li>
-                    <img src={border} alt="Country border icon" />
-                    <p>
-                      Border{country.borders?.length > 1 ? 's' : ''}:{' '}
-                      {country.borders?.length === 0 || !country.borders
-                        ? 'No borders'
-                        : country.borders.join(', ')}
-                    </p>
-                  </li>
+                  <CountryDetail
+                    detail="currency"
+                    value={
+                      country.currency
+                        ? `${country.currency.name} (${country.currency?.symbol})`
+                        : null
+                    }
+                  />
+                  <CountryDetail
+                    detail="population"
+                    value={
+                      country.population
+                        ? new Intl.NumberFormat('fr', {
+                            notation: 'compact',
+                            compactDisplay: 'long',
+                          }).format(country.population)
+                        : null
+                    }
+                  />
+                  <CountryDetail
+                    detail="capital"
+                    value={country.capital}
+                    fallback={'No capital city found.'}
+                  />
+                  <CountryDetail detail="language" value={country.languages} />
+                  <CountryDetail detail="time-zone" value={country.timezones} />
+                  <CountryDetail
+                    detail="border"
+                    value={country.borders}
+                    fallback={'No borders'}
+                  />
                 </ul>
-                <img
-                  src={country.coatOfArms}
-                  alt={`${country.name}'s coat of arms`}
-                  className={classes.coat}
-                />
+                {country.coatOfArms && (
+                  <img
+                    src={country.coatOfArms}
+                    alt={`${country.name}'s coat of arms`}
+                    className={classes.coat}
+                  />
+                )}
               </div>
             </article>
           );

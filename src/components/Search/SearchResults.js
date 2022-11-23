@@ -6,11 +6,11 @@ function SearchResults({ results, isLoading, error, showCountry }) {
     content = results.map((result) => {
       const countryData = {
         cca3: result.cca3,
-        name: result.name.official,
+        name: result.name?.official,
         region: result.region,
         currency: Object.values(result.currencies)[0],
         population: result.population,
-        capital: result.capital[0],
+        capital: result.capital ? result.capital[0] : null,
         languages: Object.values(result.languages).map((lang) =>
           lang.toLowerCase()
         ),
