@@ -21,7 +21,13 @@ function CountryDetail({ detail, value, fallback = 'Something went wrong.' }) {
   detailName += Array.isArray(value) && value.length > 1 ? 's' : ''; // allow plurals
   detailName = detailName.replace('-', ' '); // allow time-zone = Time zone(s)
 
-  const detailValue = Array.isArray(value) ? value.join(', ') : value;
+  let detailValue = value;
+  if (Array.isArray(value)) {
+    detailValue = value.slice(0, 4);
+    if (value.length > 5) detailValue.push('etc.');
+    detailValue = detailValue.join(', ');
+  }
+
   return (
     <li className={classes.detail}>
       <img
