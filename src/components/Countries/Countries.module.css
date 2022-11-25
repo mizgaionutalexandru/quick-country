@@ -48,22 +48,6 @@
   padding: 1.2rem 1.6rem 3.2rem 1.6rem;
 }
 
-.info header h2 {
-  font-size: 1.7rem;
-}
-
-.info header p {
-  font-size: 1.7rem;
-  text-transform: uppercase;
-  font-weight: bold;
-  opacity: 0.6;
-}
-
-.info header img {
-  float: right;
-  width: 3.6rem;
-}
-
 .details {
   padding-top: 1.6rem;
   list-style-type: none;
@@ -74,7 +58,7 @@
 }
 
 .details > :last-child {
-  padding-right: 2.4rem;
+  padding-right: 3.6rem;
 }
 
 .coat {

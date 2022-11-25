@@ -1,7 +1,7 @@
 import classes from './Countries.module.css';
-import star from './../../icons/star.svg';
 import smile from './../../icons/smile.svg';
 
+import CountryHeader from './CountryHeader';
 import CountryDetail from './CountryDetail';
 
 function Countries({ shownCountries }) {
@@ -23,16 +23,14 @@ function Countries({ shownCountries }) {
                 className={classes.flag}
                 alt={`${country.name}'s flag`}
               >
-                {country.flag ? '' : 'Something went wrong.'}
+                {country.flag ? '' : 'Something went wrong'}
               </div>
               <div className={classes.info}>
-                <header>
-                  <img src={star} alt="Save country action icon" />
-                  <h2>
-                    {country.name} ({country.cca3})
-                  </h2>
-                  <p>{country.region}</p>
-                </header>
+                <CountryHeader
+                  name={country.name}
+                  cca3={country.cca3}
+                  region={country.region}
+                />
                 <ul className={classes.details}>
                   <CountryDetail
                     detail="currency"
@@ -56,7 +54,7 @@ function Countries({ shownCountries }) {
                   <CountryDetail
                     detail="capital"
                     value={country.capital}
-                    fallback={'No capital city found.'}
+                    fallback={'No capital city found'}
                   />
                   <CountryDetail detail="language" value={country.languages} />
                   <CountryDetail detail="time-zone" value={country.timezones} />

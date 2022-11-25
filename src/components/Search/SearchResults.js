@@ -6,7 +6,7 @@ function SearchResults({ results, isLoading, error, showCountry }) {
     content = results.map((result) => {
       const countryData = {
         cca3: result.cca3,
-        name: result.name?.official,
+        name: result.name,
         region: result.region,
         currency: Object.values(result.currencies)[0],
         population: result.population,

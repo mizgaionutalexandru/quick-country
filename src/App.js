@@ -9,7 +9,7 @@ function App() {
   const showCountry = (data) => {
     setShownCountries((prev) => {
       if (prev.find((country) => country.cca3 === data.cca3)) return prev;
-      return [...prev, data];
+      return [data, ...prev];
     });
   };
 
