@@ -1,5 +1,6 @@
 import star from './../../icons/star.svg';
 import classes from './CountryHeader.module.css';
+import Image from '../UI/Image';
 
 function CountryHeader({ name, cca3, region }) {
   let heading = (
@@ -18,7 +19,13 @@ function CountryHeader({ name, cca3, region }) {
 
   return (
     <header className={classes.header}>
-      <img src={star} alt="Save country action icon" />
+      <Image
+        src={star}
+        alt="Save country action icon"
+        loadStyle={{
+          float: 'right',
+        }}
+      />
       {heading}
       <p>{region}</p>
     </header>

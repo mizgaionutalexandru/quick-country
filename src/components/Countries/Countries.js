@@ -3,6 +3,7 @@ import smile from './../../icons/smile.svg';
 
 import CountryHeader from './CountryHeader';
 import CountryDetail from './CountryDetail';
+import Image from '../UI/Image';
 
 function Countries({ shownCountries }) {
   const content =
@@ -65,10 +66,15 @@ function Countries({ shownCountries }) {
                   />
                 </ul>
                 {country.coatOfArms && (
-                  <img
+                  <Image
                     src={country.coatOfArms}
                     alt={`${country.name}'s coat of arms`}
                     className={classes.coat}
+                    loadStyle={{
+                      position: 'absolute',
+                      bottom: '1.2rem',
+                      right: '1.6rem',
+                    }}
                   />
                 )}
               </div>

@@ -1,4 +1,5 @@
 import classes from './SearchResults.module.css';
+import Image from '../UI/Image';
 
 function SearchResults({ results, isLoading, error, showCountry }) {
   let content;
@@ -28,7 +29,10 @@ function SearchResults({ results, isLoading, error, showCountry }) {
           onClick={showCountry.bind(null, countryData)}
         >
           {results.flags}
-          <img src={result.flags.svg} alt={`${result.name.official}'s flag`} />
+          <Image
+            src={result.flags.svg}
+            alt={`${result.name.official}'s flag`}
+          />
           <div className={classes.text}>
             <span>{result.name.official}</span>
             <span>({result.cca3})</span>

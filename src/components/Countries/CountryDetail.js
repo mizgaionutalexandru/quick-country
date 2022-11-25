@@ -6,6 +6,7 @@ import timezone from './../../icons/timezone.svg';
 import border from './../../icons/border.svg';
 
 import classes from './CountryDetail.module.css';
+import Image from '../UI/Image';
 
 const sources = {
   currency,
@@ -30,7 +31,7 @@ function CountryDetail({ detail, value, fallback = 'Something went wrong.' }) {
 
   return (
     <li className={classes.detail}>
-      <img
+      <Image
         src={sources[detail.replace('-', '')]}
         alt={`Country ${detail.replace('-', ' ')} icon`}
       />

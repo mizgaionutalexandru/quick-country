@@ -1,0 +1,26 @@
+.loadingImg {
+  display: none;
+}
+
+.loadAnim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loadAnim:after {
+  content: '';
+  width: var(--load-width);
+  height: var(--load-width);
+  border: 0.4rem solid transparent;
+  border-top-color: var(--blue);
+  border-bottom-color: var(--blue);
+  border-radius: 50%;
+  animation: loading 1s ease infinite;
+}
+
+@keyframes loading {
+  to {
+    transform: rotate(1turn);
+  }
+}

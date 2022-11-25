@@ -6,7 +6,7 @@
 
 .header span {
   display: inline-block;
-  color: #00162181;
+  color: var(--grey);
   width: 2.6rem;
   border-radius: 50%;
   text-align: center;
