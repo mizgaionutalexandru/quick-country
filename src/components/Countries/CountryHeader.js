@@ -2,7 +2,7 @@ import star from './../../icons/star.svg';
 import classes from './CountryHeader.module.css';
 import Image from '../UI/Image';
 
-function CountryHeader({ name, cca3, region }) {
+function CountryHeader({ name, cca3, region, isSaved, onChangeSaved }) {
   let heading = (
     <h2>
       {name.official} ({cca3})
@@ -16,7 +16,6 @@ function CountryHeader({ name, cca3, region }) {
       </h2>
     );
   }
-
   return (
     <header className={classes.header}>
       <Image
@@ -25,6 +24,8 @@ function CountryHeader({ name, cca3, region }) {
         loadStyle={{
           float: 'right',
         }}
+        className={!isSaved ? classes.notSaved : undefined}
+        onClick={onChangeSaved}
       />
       {heading}
       <p>{region}</p>

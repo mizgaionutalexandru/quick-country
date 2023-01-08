@@ -50,4 +50,19 @@
 .header img {
   float: right;
   width: 3.6rem;
+  cursor: pointer;
+  transition: transform 20ms ease-in-out;
+  user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+}
+
+.header .notSaved {
+  filter: grayscale(1);
+}
+
+.header img:hover {
+  transform: scale(1.05);
 }
