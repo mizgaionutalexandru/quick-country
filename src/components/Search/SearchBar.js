@@ -22,6 +22,7 @@ function SearchBar({ onSearch, adapt }) {
     return () => {
       clearTimeout(timer);
     };
+    // eslint-disable-next-line
   }, [query]);
 
   return (

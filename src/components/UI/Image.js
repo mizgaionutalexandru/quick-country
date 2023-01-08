@@ -17,7 +17,7 @@ function Image({ src, alt, loadStyle, ...props }) {
     <Fragment>
       {isLoading && <div className={classes.loadAnim} style={loadStyle}></div>}
       <img
-        className={isLoading && classes.loading}
+        className={isLoading ? classes.loading : undefined}
         src={src}
         alt={alt}
         {...props}
