@@ -13,3 +13,9 @@
 .search.left {
   left: 25%;
 }
+
+@media (max-width: 520px) {
+  .search {
+    width: 36rem;
+  }
+}

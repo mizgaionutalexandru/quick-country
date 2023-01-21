@@ -35,3 +35,21 @@
   border-radius: 1.2rem;
   --load-width: 2.4rem;
 }
+
+@media (max-width: 1444px) {
+  .list {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 1064px) {
+  .list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .list {
+    grid-template-columns: 1fr;
+  }
+}
