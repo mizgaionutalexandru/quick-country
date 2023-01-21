@@ -3,8 +3,22 @@ import classes from './App.module.css';
 import Search from './components/Search/Search';
 import Countries from './components/Countries/Countries';
 
+const localKEY = `OIucO*Klxm3ev=c3iA~#sla+N?FR$'3E,A:T+"Dga_y<\`<~dZu2S]T,wRxj6Z9l`;
+
 function App() {
   const [shownCountries, setShownCountries] = useState([]);
+
+  useEffect(() => {
+    // Load the saved countries from local storage
+    const savedCountries = JSON.parse(localStorage.getItem(localKEY));
+    setShownCountries(savedCountries);
+  }, []);
+
+  useEffect(() => {
+    // Save saved countries to local storage
+    const savedCountries = shownCountries.filter((country) => country.isSaved);
+    localStorage.setItem(localKEY, JSON.stringify(savedCountries));
+  }, [shownCountries]);
 
   const showCountry = (data) => {
     setShownCountries((prev) => {
