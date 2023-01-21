@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     // Load the saved countries from local storage
     let savedCountries = JSON.parse(localStorage.getItem(localKEY));
-    if (!savedCountries.length) savedCountries = [];
+    if (!savedCountries) savedCountries = [];
     setShownCountries(savedCountries);
   }, []);
 
