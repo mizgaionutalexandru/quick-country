@@ -112,6 +112,10 @@
 }
 
 @media (max-width: 520px) {
+  .error {
+    padding-inline: 2rem;
+  }
+
   .results {
     width: 80%;
     max-width: 80%;
