@@ -6,19 +6,21 @@ function SearchResults({ results, isLoading, error, showCountry }) {
   if (results?.length > 0)
     content = results.map((result) => {
       const countryData = {
-        cca3: result.cca3,
-        name: result.name,
-        region: result.region,
-        currency: Object.values(result.currencies)[0],
-        population: result.population,
+        cca3: result.cca3 || null,
+        name: result.name || null,
+        region: result.region || null,
+        currency: result.currencies
+          ? Object.values(result.currencies)[0]
+          : null,
+        population: result.population || null,
         capital: result.capital ? result.capital[0] : null,
-        languages: Object.values(result.languages).map((lang) =>
-          lang.toLowerCase()
-        ),
-        timezones: result.timezones,
-        borders: result.borders,
-        coatOfArms: result.coatOfArms.svg,
-        flag: result.flags.svg,
+        languages: result.languages
+          ? Object.values(result.languages).map((lang) => lang.toLowerCase())
+          : null,
+        timezones: result.timezones || null,
+        borders: result.borders || null,
+        coatOfArms: result.coatOfArms.svg || null,
+        flag: result.flags.svg || null,
       };
 
       return (

@@ -17,7 +17,7 @@ const sources = {
   border,
 };
 
-function CountryDetail({ detail, value, fallback = 'Something went wrong.' }) {
+function CountryDetail({ detail, value, fallback = 'No data found.' }) {
   let detailName = detail[0].toUpperCase() + detail.slice(1); // uppercase the first letter
   detailName += Array.isArray(value) && value.length > 1 ? 's' : ''; // allow plurals
   detailName = detailName.replace('-', ' '); // allow time-zone = Time zone(s)
