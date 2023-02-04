@@ -34,6 +34,7 @@ const reducer = (state, action) => {
 
 function Search({ showCountry }) {
   const [state, dispatch] = useReducer(reducer, initialState);
+  const controller = new AbortController();
 
   const searchHandler = async (query) => {
     try {
@@ -41,24 +42,31 @@ function Search({ showCountry }) {
         throw new Error('No query found. Please type something.');
 
       dispatch({ type: 'START_SEARCH' });
-      const res = await fetch(`https://restcountries.com/v3.1/name/${query}`);
+      const signal = controller.signal;
+      const res = await fetch(`https://restcountries.com/v3.1/name/${query}`, {
+        signal,
+      });
       if (res.status === 404) throw new Error('No countries found.');
       if (!res.ok) throw new Error('Something went wrong.');
 
       const data = await res.json();
       dispatch({ type: 'SET_RESULTS', results: data.slice(0, 3) });
     } catch (err) {
-      dispatch({ type: 'SET_ERROR', error: err.message });
+      if (err.name === 'AbortError') dispatch({ type: 'RESET' });
+      else dispatch({ type: 'SET_ERROR', error: err.message });
     }
     dispatch({ type: 'STOP_LOADING' });
   };
 
   const blurHandler = (e) => {
+    controller.abort('Cancel request.');
     if (!e.currentTarget.contains(e.relatedTarget)) dispatch({ type: 'RESET' });
   };
 
   const keydownHandler = (e) => {
-    if (e.key === 'Escape') dispatch({ type: 'RESET' });
+    if (e.key !== 'Escape') return;
+    dispatch({ type: 'RESET' });
+    controller.abort('Cancel request.');
   };
 
   return (
